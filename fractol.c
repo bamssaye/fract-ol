@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 02:55:52 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/19 03:38:48 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/19 03:52:04 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int main(int ac, char **av)
 	(void)av;
     if (ac == 3)
 	{
+		if (ft_strcmp(av[1], "Julia") || ft_strcmp(av[1], "Mandelbrot"))
+			list_available();
 		fractol = malloc(sizeof(t_fracol));
     	fractol->mlx = mlx_init();
     	fractol->mlx_win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, "fractol");

@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 02:55:52 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/19 03:52:04 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/19 07:27:30 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,32 @@ void list_available()
 	ft_putstr("\t\t- [1PA] : First paramter \n\t\t- [2PA] : Second paramter  \n\n");
 	exit(0);
 }
+int ft_checkarg(t_fracol *fractol, char **av, int ac)
+{
+	int	i;
 
+	i = -1;
+	while (av[1][++i])
+		av[1][i] = ft_tolower(av[1][i]);
+	if (!ft_strcmp(av[1], "mandelbrot") && !av[2])
+		fractol->fractol_name = 'm';
+	else if (ac == 4){
+		if (!ft_strcmp(av[1], "julia") && ft_atod(av[2]) && ft_atod(av[3]))
+			fractol->fractol_name = 'j';
+	}else
+		return (0);
+	fprintf(stderr ,"%c", fractol->fractol_name);
+	return(1);
+}
 int main(int ac, char **av)
 {
     t_fracol *fractol;
 	(void)av;
-    if (ac == 3)
+    if (ac > 1)
 	{
-		if (ft_strcmp(av[1], "Julia") || ft_strcmp(av[1], "Mandelbrot"))
-			list_available();
 		fractol = malloc(sizeof(t_fracol));
+		if (!ft_checkarg(fractol, av, ac))
+			list_available();
     	fractol->mlx = mlx_init();
     	fractol->mlx_win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, "fractol");
 		fractol->img.img = mlx_new_image(fractol->mlx, WIDTH, HEIGHT);

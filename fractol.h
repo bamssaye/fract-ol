@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:11:25 by bihixd            #+#    #+#             */
-/*   Updated: 2024/03/19 03:15:24 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/19 07:18:06 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "minilibx-linux/mlx.h"
 
 #define WIDTH  500
@@ -36,7 +37,8 @@ typedef struct f_fractol
     t_data  img;
     void    *mlx;
     void    *mlx_win;
-    
+    char	fractol_name;
+	
 
 
 
@@ -52,7 +54,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 
 //LIBFT UTILS
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
 void	ft_putstr(char *s);
+int		ft_tolower(int c);
+int		ft_isdigit(int c);
+double	ft_atod(const char *nptr);
 #endif

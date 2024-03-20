@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:11:25 by bihixd            #+#    #+#             */
-/*   Updated: 2024/03/19 07:18:06 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/20 05:07:05 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include <stdio.h>
 #include "minilibx-linux/mlx.h"
 
-#define WIDTH  500
-#define HEIGHT 500
+#define WIDTH  800
+#define HEIGHT 750
 
 typedef struct	s_data {
 	void	*img;
@@ -31,18 +31,19 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-
+typedef struct s_d
+{
+	double x;
+	double y;
+}	t_d;
 typedef struct f_fractol
 {
     t_data  img;
+	t_d		core;
     void    *mlx;
     void    *mlx_win;
     char	fractol_name;
 	
-
-
-
-
 
     
 }   t_fracol;

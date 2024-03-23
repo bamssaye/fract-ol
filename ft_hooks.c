@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 06:01:30 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/22 11:24:09 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/23 07:01:55 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int	key_hook(int keycode, t_fracol *fractol)
 		fractol->y += 0.1 * fractol->zoom;
     if (keycode == 65364)
 		fractol->y -= 0.1 * fractol->zoom;
+    if (keycode == 65451)
+        fractol->sheft_color++;
 	draw_fractol(fractol);
-	
 	return (0);
 }
 int mouse_hook(int keycode, int x, int y, t_fracol *fractol)
@@ -45,20 +46,20 @@ int mouse_hook(int keycode, int x, int y, t_fracol *fractol)
     double complex old;
     double complex new;
     
-    old = fractol->c;
-    if (keycode == 4)
-    {
-        fractol->zoom *= 1.1;
-      //  new = set_scil(x, y, fractol);
-        fractol->x = new - old;
-    }
-    if (keycode == 5)
-    {
-            fractol->zoom += 0.1;
-            fractol->zoom *= 1.1;
-          //  new = set_scil(x, y, fractol);
-            fractol->y = new - old;
-    }
+    // old = fractol->c;
+    // if (keycode == 4)
+    // {
+    //     fractol->zoom *= 1.1;
+    //   //  new = set_scil(x, y, fractol);
+    //     fractol->x = new - old;
+    // }
+    // if (keycode == 5)
+    // {
+    //         fractol->zoom += 0.1;
+    //         fractol->zoom *= 1.1;
+    //       //  new = set_scil(x, y, fractol);
+    //         fractol->y = new - old;
+    // }
 
     //draw_fractol(fractol);
     return (0);

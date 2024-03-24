@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 02:55:52 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/23 07:07:59 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/24 07:28:21 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,46 +20,27 @@ t_comp  set_scil(int x, int y, t_fracol *fractol)
 	tmp.i = ((y - HEIGHT / 2) * (4.0 / HEIGHT * fractol->zoom) + fractol->y);
 	return (tmp);
 }
-int	gen_color(int iteration)
-{
-	double	t;
-	int		r;
-	int		g;
-	int		b;
-
-	t = (double)iteration / 60;
-	if (iteration >= 60)
-		return (0);
-	// r = (int)(sin(2 * 3.14 * t) * 127 + 128);
-	// g = (int)(sin(2 * 3.14 * t + 2) * 127 + 128);
-	// b = (int)(sin(2 * 3.14 * t + 4) * 127 + 128);
-	//return (r << 16 | g << 8 | b);
-// 	int	create_trgb(int t, int r, int g, int b)
-// {
-	//0x 00 00 00 00
-	
-	return (t << 24 | r << 16 | g << 8 | b);
-}
 
 void draw_fractol(t_fracol *fractol)
 {
 	int x;
 	int y;
-	
+
 	x = 0;
-	fprintf(stderr, "dsds %f %c\n", fractol->y, fractol->fractol_name);
 	while (x < WIDTH)
 	{
 		y = 0;
 		while (y < HEIGHT)
 		{	
 			fractol->c = set_scil(x, y, fractol);
-			fractol->color = gen_color(get_fractol(fractol));
-			// if (fractol->color == fractol->iter)
-			// 	my_mlx_pixel_put(&fractol->img, x, y, 0x00000000);
-			// else
-				my_mlx_pixel_put(&fractol->img, x, y, fractol->color << fractol->sheft_color);
+			fractol->color = get_fractol(fractol);
+			if (fractol->color == fractol->iter)
+				my_mlx_pixel_put(&fractol->img, x, y, 0x00000000);
+			else
+				my_mlx_pixel_put(&fractol->img, x, y, ((fractol->color * 290)  << fractol->sheft_color));
 			y++;
+			if (fractol->sheft_color == 23)
+				fractol->sheft_color = 1;
 		}
 		x++;
 	}

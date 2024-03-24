@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 06:01:30 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/23 07:01:55 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/24 07:52:11 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,29 @@ int	key_hook(int keycode, t_fracol *fractol)
 int mouse_hook(int keycode, int x, int y, t_fracol *fractol)
 {
     fprintf(stderr, "%d x %d y %d \n", keycode , x , y);
-    double complex old;
-    double complex new;
-    
-    // old = fractol->c;
-    // if (keycode == 4)
-    // {
-    //     fractol->zoom *= 1.1;
-    //   //  new = set_scil(x, y, fractol);
-    //     fractol->x = new - old;
-    // }
-    // if (keycode == 5)
-    // {
-    //         fractol->zoom += 0.1;
-    //         fractol->zoom *= 1.1;
-    //       //  new = set_scil(x, y, fractol);
-    //         fractol->y = new - old;
-    // }
-
-    //draw_fractol(fractol);
+    t_comp old;
+    t_comp new;
+     
+    old = set_scil(x ,y, fractol);
+    if (keycode == 4)
+    {
+        fractol->zoom *= 1.2;
+        new = set_scil(x ,y, fractol);
+        fractol->x += old.r - new.r;
+        fractol->y += old.i - old.i;
+    }
+    if (keycode == 5)
+    {
+            fractol->zoom *= 0.7;
+            new = set_scil(x ,y, fractol);
+            fractol->x += old.r - new.r;
+            fractol->y += old.i - old.i;
+    }
+    mlx_clear_window(fractol->mlx, fractol->mlx_win);
+    draw_fractol(fractol);
     return (0);
 }
+
 void ft_hooks_fun(t_fracol *fractol)
 {
     mlx_key_hook((*fractol).mlx_win, key_hook, fractol);

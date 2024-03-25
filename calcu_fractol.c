@@ -12,62 +12,61 @@
 
 #include "fractol.h"
 
-int mandelbrot_set(t_fracol *fractol)
+int	mandelbrot_set(t_fracol *fractol)
 {
-    t_comp z;
-    t_comp t;
-    
-    int i = 0;
-    z.i = 0;
-    z.r = 0;
-    while (z.r * z.r + z.i * z.i <= 4 && i < fractol->iter)
+	t_comp	z;
+	t_comp	t;
+	int		i;
+
+	i = 0;
+	z.i = 0;
+	z.r = 0;
+	while (z.r * z.r + z.i * z.i <= 4 && i < fractol->iter)
 	{
-        t.r = z.r * z.r - z.i * z.i + fractol->c.r;
-        z.i = 2 * z.i * z.r + fractol->c.i;
-        z.r = t.r;
-        i++;
-        
+		t.r = z.r * z.r - z.i * z.i + fractol->c.r;
+		z.i = 2 * z.i * z.r + fractol->c.i;
+		z.r = t.r;
+		i++;
 	}
 	return (i);
 }
 
-int juila_set(t_fracol *fractol)
+int	juila_set(t_fracol *fractol)
 {
-    t_comp t;
-    t_comp z;
-    int    i;
-    
-    i = 0;
-    z = fractol->c;
-    while (i < fractol->iter)
+	t_comp	t;
+	t_comp	z;
+	int		i;
+
+	i = 0;
+	z = fractol->c;
+	while (i < fractol->iter)
 	{
-        t.r = z.r * z.r - z.i * z.i + fractol->julia_r;
-        t.i = 2 * z.r * z.i + fractol->julia_i;
-        z = t;
-        if (t.r * t.r + t.i * t.i >= 4)
-            return (i);
-        i++;
+		t.r = z.r * z.r - z.i * z.i + fractol->julia_r;
+		t.i = 2 * z.r * z.i + fractol->julia_i;
+		z = t;
+		if (t.r * t.r + t.i * t.i >= 4)
+			return (i);
+		i++;
 	}
 	return (i);
-   
 }
 
-int tricorn_set(t_fracol *fractol)
+int	tricorn_set(t_fracol *fractol)
 {
-    t_comp t;
-    t_comp z;
-    int    i;
-    
-    i = 0;
-    z = fractol->c;
-    while (i < fractol->iter)
+	t_comp	t;
+	t_comp	z;
+	int		i;
+
+	i = 0;
+	z = fractol->c;
+	while (i < fractol->iter)
 	{
-        t.r = z.r * z.r - z.i * z.i + fractol->c.r;
-        t.i = -2 * z.r * z.i + fractol->c.i;
-        z = t;
-        if (t.r * t.r + t.i * t.i >= 4)
-            return (i);
-        i++;
+		t.r = z.r * z.r - z.i * z.i + fractol->c.r;
+		t.i = -2 * z.r * z.i + fractol->c.i;
+		z = t;
+		if (t.r * t.r + t.i * t.i >= 4)
+			return (i);
+		i++;
 	}
 	return (i);
 }

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_utils.c                                    :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 07:41:12 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/22 09:38:06 by bamssaye         ###   ########.fr       */
+/*   Created: 2024/03/18 21:11:25 by bihixd            #+#    #+#             */
+/*   Updated: 2024/03/25 03:38:29 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
+
 #include "fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
+#endif

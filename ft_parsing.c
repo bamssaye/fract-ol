@@ -6,13 +6,13 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 06:00:39 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/23 06:40:38 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/25 03:27:53 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void list_available()
+void	list_available(void)
 {
 	ft_putstr("\n\t#  The parameter is invalid. #\n");
 	ft_putstr("\n* Prototype : >> ./fractol [FRACTOL NAME] \n");
@@ -20,10 +20,9 @@ void list_available()
 	ft_putstr("\n* Multi-Julia: >> ./fractol Julia [1PA] [2PA]\n");
 	ft_putstr("\t\t- [r] : Real Number \n\t\t- [i] : Imaginary Number  \n\n");
 	exit(0);
-	//return (0);
 }
 
-int get_fractol(t_fracol *fractol)
+int	get_fractol(t_fracol *fractol)
 {
 	if (fractol->fractol_name == 'm')
 		return (mandelbrot_set(fractol));
@@ -31,7 +30,7 @@ int get_fractol(t_fracol *fractol)
 		return (juila_set(fractol));
 	if (fractol->fractol_name == 't')
 		return (tricorn_set(fractol));
-	return(0);
+	return (0);
 }
 
 static int	ft_strcmp(char *s1, char *s2)
@@ -46,12 +45,12 @@ static int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-static void ft_tolower_change(char *str)
+static void	ft_tolower_change(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] >= 'A' && str[i] <= 'Z')
 			str[i] += 32;
@@ -59,7 +58,7 @@ static void ft_tolower_change(char *str)
 	}
 }
 
-int ft_checkarg(t_fracol *fractol, char **av, int ac)
+int	ft_checkarg(t_fracol *fractol, char **av, int ac)
 {
 	ft_tolower_change(av[1]);
 	if (!ft_strcmp(av[1], "mandelbrot") && ac == 2)
@@ -78,11 +77,11 @@ int ft_checkarg(t_fracol *fractol, char **av, int ac)
 		}
 		else
 			return (0);
-		fractol->fractol_name = 'j';	
+		fractol->fractol_name = 'j';
 	}
 	else if (ac == 2 && !ft_strcmp(av[1], "tricorn"))
 		fractol->fractol_name = 't';
 	else
-	 	return (0);
-	return(1);
+		return (0);
+	return (1);
 }

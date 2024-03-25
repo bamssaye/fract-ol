@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/16 07:29:23 by bamssaye          #+#    #+#              #
-#    Updated: 2024/03/22 09:47:20 by bamssaye         ###   ########.fr        #
+#    Created: 2024/03/25 03:33:03 by bamssaye          #+#    #+#              #
+#    Updated: 2024/03/25 03:33:38 by bamssaye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
 RM = rm -rf
 AR = ar -rc
-FLAG = -fsanitize=address
 #-----------
 FUN = fractol_utils.c fractol.c libft_utils.c\
 	ft_parsing.c ft_init.c calcu_fractol.c\
@@ -25,6 +25,7 @@ FUN = fractol_utils.c fractol.c libft_utils.c\
 OBG = $(FUN:%.c=%.o)
 #----------
 
+
 %.o: %.c
 	$(CC)  -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
@@ -32,9 +33,12 @@ all : $(NAME)
 
 $(NAME): $(OBG)
 	$(CC) $(OBG) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-c:
+	
+clean:
 	$(RM)  $(OBG)
-f : c
+	
+fclean : clean
 	$(RM) $(NAME)
-re: c all
+	
+re: clean all
 	

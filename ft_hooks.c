@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 06:01:30 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/24 07:52:11 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/25 02:24:45 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,28 @@
 
 int ft_clear_all(t_fracol *fractol)
 {
-    //
-    // mlx_destroy_image(fractol->mlx, fractol->img.img);
-    // mlx_destroy_display(fractol->mlx);
-    // mlx_destroy_window(fractol->mlx, fractol->mlx_win);
+    mlx_destroy_image(fractol->mlx, fractol->img.img);
+    mlx_destroy_window(fractol->mlx, fractol->mlx_win);
+    mlx_destroy_display(fractol->mlx);
+    free(fractol->mlx);
     exit(0);
     return (0);
 }
+
+void get_color_all(t_fracol *fractol, int keycode)
+{
+    if (keycode == 112)
+        fractol->sheft_color = 0xa33db5;
+    if (keycode == 111)
+        fractol->sheft_color = 0xcb94e0;
+    if (keycode == 105)
+        fractol->sheft_color = 0x5b0c91;
+    if (keycode == 117)
+        fractol->sheft_color = 0xe25edf;
+    if (keycode == 121)
+        fractol->sheft_color = 0xfc9725;
+}
+
 int	key_hook(int keycode, t_fracol *fractol)
 {
 	fprintf(stderr, "%d", keycode);
@@ -35,14 +50,13 @@ int	key_hook(int keycode, t_fracol *fractol)
 		fractol->y += 0.1 * fractol->zoom;
     if (keycode == 65364)
 		fractol->y -= 0.1 * fractol->zoom;
-    if (keycode == 65451)
-        fractol->sheft_color++;
+    get_color_all(fractol, keycode);
+    mlx_clear_window(fractol->mlx, fractol->mlx_win);
 	draw_fractol(fractol);
 	return (0);
 }
 int mouse_hook(int keycode, int x, int y, t_fracol *fractol)
 {
-    fprintf(stderr, "%d x %d y %d \n", keycode , x , y);
     t_comp old;
     t_comp new;
      

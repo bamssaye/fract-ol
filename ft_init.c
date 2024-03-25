@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 06:16:36 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/23 07:02:10 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/25 02:13:28 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void ft_init_variable(t_fracol *fractol)
     fractol->zoom = 1;
     fractol->x = 0;
     fractol->y = 0;
-    fractol->sheft_color = 0;
+    fractol->sheft_color = 0x00080000;
 }

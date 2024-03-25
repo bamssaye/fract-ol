@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 02:55:52 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/24 07:28:21 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/25 02:14:08 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ void draw_fractol(t_fracol *fractol)
 			if (fractol->color == fractol->iter)
 				my_mlx_pixel_put(&fractol->img, x, y, 0x00000000);
 			else
-				my_mlx_pixel_put(&fractol->img, x, y, ((fractol->color * 290)  << fractol->sheft_color));
+				my_mlx_pixel_put(&fractol->img, x, y, fractol->color * fractol->sheft_color);
 			y++;
-			if (fractol->sheft_color == 23)
-				fractol->sheft_color = 1;
 		}
 		x++;
 	}

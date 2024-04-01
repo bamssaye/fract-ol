@@ -6,7 +6,7 @@
 /*   By: bamssaye <bamssaye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 06:01:30 by bamssaye          #+#    #+#             */
-/*   Updated: 2024/03/25 05:41:43 by bamssaye         ###   ########.fr       */
+/*   Updated: 2024/03/25 06:45:02 by bamssaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	key_hook(int keycode, t_fracol *fractol)
 	if (keycode == 65307)
 		ft_clear_all(fractol);
 	if (keycode == 65363)
-		fractol->x -= 0.1 * fractol->zoom;
-	if (keycode == 65361)
 		fractol->x += 0.1 * fractol->zoom;
+	if (keycode == 65361)
+		fractol->x -= 0.1 * fractol->zoom;
 	if (keycode == 65362)
 		fractol->y += 0.1 * fractol->zoom;
 	if (keycode == 65364)
